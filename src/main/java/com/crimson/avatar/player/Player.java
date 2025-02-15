@@ -24,12 +24,4 @@ public class Player extends Avatar<PlayerData> {
         return this.network;
     }
 
-    public boolean doesNotExist() {
-        return this.equals(Player.NONE);
-    }
-
-    public boolean doesExist() {
-        return !doesNotExist();
-    }
-
 }

@@ -2,7 +2,7 @@ package com.crimson.avatar.player;
 
 import io.netty.channel.Channel;
 
-public record PlayerNetwork(Channel channel) {
+public record PlayerNetwork(int networkId, String name, Channel channel) {
 
     public void dispatch() {
     }
