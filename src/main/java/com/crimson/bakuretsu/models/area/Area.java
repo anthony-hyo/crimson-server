@@ -6,8 +6,8 @@ import com.crimson.bakuretsu.annotations.Id;
 import com.crimson.bakuretsu.annotations.Table;
 import com.crimson.bakuretsu.core.Model;
 
-@Table("areas")
 @Cached
+@Table("areas")
 public class Area extends Model<Area> {
 
 	@Id

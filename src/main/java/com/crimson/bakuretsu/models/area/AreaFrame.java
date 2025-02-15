@@ -1,13 +1,14 @@
-package com.crimson.bakuretsu.models.avatar.user;
+package com.crimson.bakuretsu.models.area;
 
+import com.crimson.bakuretsu.annotations.Cached;
 import com.crimson.bakuretsu.annotations.Column;
 import com.crimson.bakuretsu.annotations.Id;
 import com.crimson.bakuretsu.annotations.Table;
 import com.crimson.bakuretsu.core.Model;
-import com.crimson.bakuretsu.models.avatar.IAvatarData;
 
-@Table("users")
-public class User extends Model<User> implements IAvatarData {
+@Cached
+@Table("areas_frames")
+public class AreaFrame extends Model<Area> {
 
 	@Id
 	@Column(
@@ -20,37 +21,20 @@ public class User extends Model<User> implements IAvatarData {
 	)
 	private String Name;
 
-	@Column(
-		name = "Password"
-	)
-	private String Password;
-
-	@Override
 	public int getId() {
 		return id;
 	}
 
-	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	@Override
 	public String getName() {
 		return Name;
 	}
 
-	@Override
 	public void setName(String name) {
 		Name = name;
-	}
-
-	public String getPassword() {
-		return Password;
-	}
-
-	public void setPassword(String password) {
-		Password = password;
 	}
 
 }
