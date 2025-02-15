@@ -4,11 +4,9 @@ import com.crimson.avatar.player.Player;
 import com.crimson.controller.PlayerController;
 import com.crimson.network.data.JsonData;
 import com.crimson.requests.RequestFactory;
-import com.crimson.requests.data.RequestData;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import net.sf.json.JSONObject;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,7 +87,7 @@ public class NetworkHandler extends SimpleChannelInboundHandler<JsonData> {
     }
 
     @Override
-    public void channelInactive(@NotNull ChannelHandlerContext ctx) {
+    public void channelInactive(ChannelHandlerContext ctx) {
         String ip = getIpAddress(ctx);
 
         Player player = ctx.channel().attr(PlayerController.PLAYER_KEY).get();

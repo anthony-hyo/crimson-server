@@ -4,11 +4,11 @@ import com.crimson.network.data.JsonData;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
-import kotlin.text.Charsets;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class NetworkDecoder extends MessageToMessageDecoder<ByteBuf> {
@@ -21,7 +21,7 @@ public class NetworkDecoder extends MessageToMessageDecoder<ByteBuf> {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf byteBuf, List<Object> out) {
-        String packet = byteBuf.toString(Charsets.UTF_8);
+        String packet = byteBuf.toString(StandardCharsets.UTF_8);
 
         byteBuf.markReaderIndex();
 
