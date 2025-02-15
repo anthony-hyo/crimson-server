@@ -29,8 +29,9 @@ public class Monster extends Model<User> implements IAvatarData {
 	}
 
 	@Override
-	public void setId(int id) {
+	public Monster setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	@Override
@@ -39,8 +40,9 @@ public class Monster extends Model<User> implements IAvatarData {
 	}
 
 	@Override
-	public void setName(String name) {
+	public Monster setName(String name) {
 		Name = name;
+		return this;
 	}
 
 }

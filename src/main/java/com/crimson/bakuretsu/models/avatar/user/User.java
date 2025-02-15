@@ -31,8 +31,9 @@ public class User extends Model<User> implements IAvatarData {
 	}
 
 	@Override
-	public void setId(int id) {
+	public User setId(int id) {
 		this.id = id;
+		return this;
 	}
 
 	@Override
@@ -41,16 +42,18 @@ public class User extends Model<User> implements IAvatarData {
 	}
 
 	@Override
-	public void setName(String name) {
+	public User setName(String name) {
 		Name = name;
+		return this;
 	}
 
 	public String getPassword() {
 		return Password;
 	}
 
-	public void setPassword(String password) {
+	public User setPassword(String password) {
 		Password = password;
+		return this;
 	}
 
 }

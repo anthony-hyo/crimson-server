@@ -10,7 +10,7 @@ import com.crimson.bakuretsu.models.avatar.user.User;
 
 @Cached
 @Table("npcs")
-public class NonPlayerCharacterAvatar extends Model<User> implements IAvatarData {
+public class NPC extends Model<User> implements IAvatarData {
 
 	@Id
 	@Column(
@@ -23,24 +23,24 @@ public class NonPlayerCharacterAvatar extends Model<User> implements IAvatarData
 	)
 	private String Name;
 
-	@Override
 	public int getId() {
 		return id;
 	}
 
 	@Override
-	public void setId(int id) {
+	public NPC setId(int id) {
 		this.id = id;
+		return this;
 	}
 
-	@Override
 	public String getName() {
 		return Name;
 	}
 
 	@Override
-	public void setName(String name) {
+	public NPC setName(String name) {
 		Name = name;
+		return this;
 	}
 
 }

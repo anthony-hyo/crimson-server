@@ -2,7 +2,6 @@ package com.crimson.controller;
 
 import com.crimson.avatar.player.Player;
 import com.crimson.network.encoder.NetworkEncoder;
-import com.crimson.network.handler.NetworkHandler;
 import io.netty.channel.Channel;
 import io.netty.util.AttributeKey;
 import net.sf.json.JSONObject;
@@ -36,7 +35,7 @@ public class PlayerController {
 
         int networkId = PlayerController.COUNT.getAndIncrement();
 
-        PLAYERS.put(networkId, new Player(networkId, name, channel));
+        PLAYERS.put(networkId, new Player(networkId, name, channel, ));
 
         NetworkEncoder.dispatch(
             new JSONObject()

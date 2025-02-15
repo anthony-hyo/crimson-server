@@ -4,10 +4,10 @@ public interface IAvatarData {
 
 	int getId();
 
-	void setId(int id);
+	IAvatarData setId(int id);
 
 	String getName();
 
-	void setName(String name);
+	IAvatarData setName(String name);
 
 }

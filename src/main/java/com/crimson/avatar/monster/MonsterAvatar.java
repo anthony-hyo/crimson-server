@@ -1,12 +1,12 @@
 package com.crimson.avatar.monster;
 
 import com.crimson.avatar.Avatar;
-import com.crimson.avatar.player.PlayerData;
+import com.crimson.bakuretsu.models.avatar.monster.Monster;
 
-public class MonsterAvatar extends Avatar<PlayerData> {
+public class MonsterAvatar extends Avatar<Monster> {
 
 	@Override
-	public PlayerData data() {
+	public Monster data() {
 		return null;
 	}
 
