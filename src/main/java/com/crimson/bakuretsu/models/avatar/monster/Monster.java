@@ -6,7 +6,7 @@ import com.crimson.bakuretsu.annotations.Id;
 import com.crimson.bakuretsu.annotations.Table;
 import com.crimson.bakuretsu.core.Model;
 import com.crimson.bakuretsu.models.avatar.IAvatarData;
-import com.crimson.bakuretsu.models.avatar.user.User;
+import com.crimson.bakuretsu.models.user.User;
 
 @Cached
 @Table("monsters")

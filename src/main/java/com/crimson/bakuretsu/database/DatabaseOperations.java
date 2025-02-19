@@ -98,6 +98,8 @@ public class DatabaseOperations {
 			case "java.lang.Double", "double" -> rs.getDouble(columnName);
 			case "java.lang.Float", "float" -> rs.getFloat(columnName);
 			case "java.math.BigDecimal" -> rs.getBigDecimal(columnName);
+			//TODO: JSON ARRAY Type
+			//TODO: JSON ELEMENT Type
 			default -> value;
 		};
 	}

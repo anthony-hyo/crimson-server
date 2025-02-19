@@ -1,10 +1,11 @@
-package com.crimson.bakuretsu.models.area;
+package com.crimson.bakuretsu.models.frame;
 
 import com.crimson.bakuretsu.annotations.Cached;
 import com.crimson.bakuretsu.annotations.Column;
 import com.crimson.bakuretsu.annotations.Id;
 import com.crimson.bakuretsu.annotations.Table;
 import com.crimson.bakuretsu.core.Model;
+import com.crimson.bakuretsu.models.area.Area;
 
 @Cached
 @Table("areas_frames")

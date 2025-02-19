@@ -1,6 +1,6 @@
 package com.crimson.controller;
 
-import com.crimson.avatar.player.Player;
+import com.crimson.avatar.player.PlayerAvatar;
 import com.crimson.network.encoder.NetworkEncoder;
 import io.netty.channel.Channel;
 import io.netty.util.AttributeKey;
@@ -18,11 +18,11 @@ public class PlayerController {
 
     private static final Logger log = LoggerFactory.getLogger(PlayerController.class);
 
-    public static final AttributeKey<Player> PLAYER_KEY = AttributeKey.valueOf("Player");
+    public static final AttributeKey<PlayerAvatar> PLAYER_KEY = AttributeKey.valueOf("Player");
 
     public static final AtomicInteger COUNT = new AtomicInteger(0);
 
-    private static final ConcurrentHashMap<Integer, Player> PLAYERS = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<Integer, PlayerAvatar> PLAYERS = new ConcurrentHashMap<>();
 
     public static void login(Channel channel, JSONObject json) {
         String name = json.getString("name");
@@ -35,7 +35,7 @@ public class PlayerController {
 
         int networkId = PlayerController.COUNT.getAndIncrement();
 
-        PLAYERS.put(networkId, new Player(networkId, name, channel, ));
+        PLAYERS.put(networkId, new PlayerAvatar(networkId, name, channel, ));
 
         NetworkEncoder.dispatch(
             new JSONObject()
@@ -46,18 +46,18 @@ public class PlayerController {
         );
     }
 
-    public static void disconnect(Player player, String message) {
-        PLAYERS.remove(player.data().id());
+    public static void disconnect(PlayerAvatar playerAvatar, String message) {
+        PLAYERS.remove(playerAvatar.data().id());
 
-        if (player.network().channel().isActive()) {
+        if (playerAvatar.network().channel().isActive()) {
             NetworkEncoder.dispatch(
                 new JSONObject()
                     .element("type", "disconnect")
                     .element("message", message),
-                player.network().channel()
+                playerAvatar.network().channel()
             );
 
-            player.network().channel().disconnect();
+            playerAvatar.network().channel().disconnect();
         }
     }
 
@@ -65,14 +65,14 @@ public class PlayerController {
         //TODO: register
     }
 
-    public static Player find(String name) {
+    public static PlayerAvatar find(String name) {
         String nameCase = name.toLowerCase(Locale.US);
 
         return PLAYERS.values()
             .stream()
             .filter(player -> player.data().name().equals(nameCase))
             .findFirst()
-            .orElse(Player.NONE);
+            .orElse(PlayerAvatar.NONE);
     }
 
     public static LinkedList<Channel> channels() {

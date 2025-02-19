@@ -4,7 +4,6 @@ import io.netty.handler.traffic.GlobalTrafficShapingHandler;
 import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Executors;
-import java.util.logging.Logger;
 
 public class Main {
 

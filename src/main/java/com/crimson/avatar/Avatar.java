@@ -1,6 +1,5 @@
 package com.crimson.avatar;
 
-import com.crimson.avatar.player.Player;
 import com.crimson.bakuretsu.models.avatar.IAvatarData;
 
 public abstract class Avatar<D extends IAvatarData> {

@@ -17,9 +17,19 @@ public class Area extends Model<Area> {
 	private int id;
 
 	@Column(
-		name = "Name"
+		name = "name"
 	)
-	private String Name;
+	private String name;
+
+	@Column(
+		name = "asset"
+	)
+	private String asset;
+
+	@Column(
+		name = "music"
+	)
+	private String music;
 
 	public int getId() {
 		return id;
@@ -30,11 +40,29 @@ public class Area extends Model<Area> {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
+	}
+
+	public String Asset() {
+		return asset;
+	}
+
+	public Area setAsset(String asset) {
+		this.asset = asset;
+		return this;
+	}
+
+	public String Music() {
+		return music;
+	}
+
+	public Area setMusic(String music) {
+		this.music = music;
+		return this;
 	}
 
 }

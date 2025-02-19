@@ -2,11 +2,11 @@ package com.crimson.bakuretsu.models.avatar;
 
 public interface IAvatarData {
 
-	int getId();
+	int id();
 
 	IAvatarData setId(int id);
 
-	String getName();
+	String name();
 
 	IAvatarData setName(String name);
 

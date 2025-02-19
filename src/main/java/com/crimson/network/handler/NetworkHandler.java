@@ -1,6 +1,6 @@
 package com.crimson.network.handler;
 
-import com.crimson.avatar.player.Player;
+import com.crimson.avatar.player.PlayerAvatar;
 import com.crimson.controller.PlayerController;
 import com.crimson.network.data.JsonData;
 import com.crimson.requests.RequestFactory;
@@ -24,14 +24,14 @@ public class NetworkHandler extends SimpleChannelInboundHandler<JsonData> {
     private static final String EVENT_REGISTER = "register";
 
     private static void handleRequest(ChannelHandlerContext ctx, JSONObject json) {
-        Player player = ctx.channel().attr(PlayerController.PLAYER_KEY).get();
+        PlayerAvatar playerAvatar = ctx.channel().attr(PlayerController.PLAYER_KEY).get();
 
-        if (player == null) {
+        if (playerAvatar == null) {
             handlePlayerNotFound(ctx);
             return;
         }
 
-        RequestFactory.get(json.getString(REQUEST_NAME)).run(player, json.getJSONObject(REQUEST_JSON));
+        RequestFactory.get(json.getString(REQUEST_NAME)).run(playerAvatar, json.getJSONObject(REQUEST_JSON));
     }
 
     private static void handleEvent(ChannelHandlerContext ctx, JSONObject json) {
@@ -90,16 +90,16 @@ public class NetworkHandler extends SimpleChannelInboundHandler<JsonData> {
     public void channelInactive(ChannelHandlerContext ctx) {
         String ip = getIpAddress(ctx);
 
-        Player player = ctx.channel().attr(PlayerController.PLAYER_KEY).get();
+        PlayerAvatar playerAvatar = ctx.channel().attr(PlayerController.PLAYER_KEY).get();
 
-        if (player == null) {
+        if (playerAvatar == null) {
             log.debug("Disconnected IP with NULL player: {}", ip);
             return;
         }
 
-        log.info("Player disconnected - Username: {}, Network ID: {}, IP: {}", player.data().name(), player.data().id(), ip);
+        log.info("Player disconnected - Username: {}, Network ID: {}, IP: {}", playerAvatar.data().name(), playerAvatar.data().id(), ip);
 
-        player.network().disconnect();
+        playerAvatar.network().disconnect();
     }
 
     @Override
